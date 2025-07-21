@@ -1,0 +1,38 @@
+create database sample;
+use sample;
+create table practice1(
+stud_id int primary key auto_increment,
+stu_name varchar(100) not null,
+email varchar(100) not null
+);
+insert into practice1(stu_name, email) 
+values('john', 'john@gmail.com'),
+('rambo', 'rambo@gmail.com'),
+('bond', 'bond@gmail.com'),
+('james', 'james@gmail.com'),
+('jardhani', 'jardhani@gmail.com'),
+('ana', 'ana@gmail.com'),
+('aramas', 'aramas@gmail.com');
+desc practice1;
+select * from practice1;
+alter table practice1 
+add course_id int check (course_id>0 AND course_id<13);
+insert into practice1(stu_name, email, course_id)
+values('jeera','jeera@gmail.com',1);
+alter table practice1 drop column course_id;
+alter table practice1 add column
+age int not null default 15;
+update practice1 set age = 16 where  stud_id > 5;
+
+use sample;
+CREATE TABLE courses (
+    course_id INT PRIMARY KEY,
+    course_name VARCHAR(100)
+);
+
+CREATE TABLE staffs (
+    staff_id INT auto_increment primary KEY,
+    stuaff_name VARCHAR(100),
+    course_id INT,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id)
+);
